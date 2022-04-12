@@ -7,6 +7,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jm.task.core.jdbc.util.Util.closeConnection;
+
 public class UserDaoJDBCImpl implements UserDao {
     public UserDaoJDBCImpl() {
     }
@@ -82,5 +84,9 @@ private final Connection connection = Util.getConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public  void closeConnection() {
+        Util.closeConnection();
     }
 }

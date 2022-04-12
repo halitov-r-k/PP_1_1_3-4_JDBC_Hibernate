@@ -9,7 +9,7 @@ public class Util {
        private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
        private static final String URL = "jdbc:mysql://localhost:3306/db";
        private static final String USER = "root";
-       private static final String PASSWORD = "1111";
+       private static final String PASSWORD = "password";
        public static Connection connection;
        public static Connection getConnection() {
               try {
@@ -19,5 +19,16 @@ public class Util {
                      e.printStackTrace();
               }
               return connection;
+       }
+
+       public static void closeConnection() {
+              if (connection != null) {
+                     try {
+                            connection.close();
+                            System.out.println("Util: Close connection");
+                     } catch (SQLException e) {
+                            e.printStackTrace();
+                     }
+             }
        }
 }
